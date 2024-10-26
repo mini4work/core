@@ -1,6 +1,5 @@
 {
   "name": "mnaz26/miniwork",
-  "version": "1.0.0",
   "description": "Minimalistic framework with Service Container and Dependency Injection",
   "minimum-stability": "stable",
   "license": "proprietary",
