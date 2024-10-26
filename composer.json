@@ -19,7 +19,7 @@
       "helpers.php"
     ],
     "psr-4": {
-      "App\\": "/"
+      "Miniwork\\": "/"
     }
   }
 }

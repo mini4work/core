@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Facades;
-
-use Facades\AbstractFacade;
+namespace Miniwork\Facades;
 
 /**
  * @method static string replaceTwoBitCharsToOne(string $string, int|null $maxLength = null)

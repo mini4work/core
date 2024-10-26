@@ -1,6 +1,6 @@
 <?php
 
-namespace Services;
+namespace Miniwork\Services;
 
 class BitsManipulationService
 {

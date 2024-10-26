@@ -1,6 +1,6 @@
 <?php
 
-namespace Facades;
+namespace Miniwork\Facades;
 
 use Exception;
 

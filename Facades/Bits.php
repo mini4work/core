@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Facades;
+namespace Miniwork\Facades;
 
-use Facades\AbstractFacade;
 
 /**
  * @method static bool isUTF8StartByte(string $hex)

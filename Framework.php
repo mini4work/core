@@ -1,15 +1,13 @@
 <?php
 
-namespace App;
-
-use Container\Container;
+namespace Miniwork;
 
 class Framework extends Container
 {
     protected array $bindings = [
-        'strings' => \Services\StringService::class,
-        'bits' => \Services\BitsManipulationService::class,
-        'consoles' => \Services\ConsoleService::class,
+        'strings' => \Miniwork\Services\StringService::class,
+        'bits' => \Miniwork\Services\BitsManipulationService::class,
+        'consoles' => \Miniwork\Services\ConsoleService::class,
     ];
 
     public function __construct()

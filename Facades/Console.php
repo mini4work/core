@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Facades;
+namespace Miniwork\Facades;
 
-use Enum\ConsoleStyles;
-use Facades\AbstractFacade;
+use Miniwork\Enums\ConsoleStyles;
 
 /**
  * @method static string markup(string $line, array|ConsoleStyles $style)

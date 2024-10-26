@@ -1,8 +1,8 @@
 <?php
 
-namespace Services;
+namespace Miniwork\Services;
 
-use Enum\ConsoleStyles;
+use Miniwork\Enums\ConsoleStyles;
 
 class ConsoleService
 {

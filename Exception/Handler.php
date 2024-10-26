@@ -1,6 +1,6 @@
 <?php
 
-namespace Exception;
+namespace Miniwork\Exception;
 
 use Throwable;
 

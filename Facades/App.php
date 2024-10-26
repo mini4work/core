@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Facades;
+namespace Miniwork\Facades;
 
-use Facades\AbstractFacade;
 
 class App extends AbstractFacade
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Enum;
+namespace Miniwork\Enums;
 
 enum ConsoleStyles: string
 {

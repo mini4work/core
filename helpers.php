@@ -1,5 +1,7 @@
 <?php
 
+use Miniwork\Container;
+
 if (! function_exists('app')) {
     /**
      * @throws Exception
@@ -7,9 +9,9 @@ if (! function_exists('app')) {
     function app(string $abstract = null, array $parameters = [])
     {
         if (is_null($abstract)) {
-            return \Container\Container::getInstance();
+            return Container::getInstance();
         }
 
-        return \Container\Container::getInstance()->get($abstract, $parameters);
+        return Container::getInstance()->get($abstract, $parameters);
     }
 }
