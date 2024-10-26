@@ -7,7 +7,14 @@ use Exception;
 class Container
 {
     protected static ?Container $instance = null;
-    protected array $bindings = [];
+    private array $bindings = [];
+
+    public function __construct()
+    {
+        static::$instance = $this;
+        $this->singleton('app', $this);
+        $this->singleton(Container::class, $this);
+    }
 
     public static function getInstance(): Container
     {
@@ -55,7 +62,7 @@ class Container
     /**
      * @throws Exception
      */
-    public function get(string $abstract, array $params): object
+    public function get(string $abstract, ?array $params = null): object
     {
         if (!$this->containerHas($abstract)) {
             if (!$this->classExists($abstract)) {

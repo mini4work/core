@@ -10,15 +10,27 @@
     }
   ],
   "require": {
-    "php": "^8.3",
-    "ext-mbstring": "*"
+    "php": "^8.3"
   },
   "autoload": {
     "files": [
-      "helpers.php"
+      "app/helpers.php"
     ],
     "psr-4": {
-      "Miniwork\\": "/"
+      "Miniwork\\": "app/"
+    }
+  },
+  "require-dev": {
+    "pestphp/pest": "^3.5"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
     }
   }
 }
