@@ -2,8 +2,10 @@
 
 namespace Miniwork\Facades;
 
-
-class App extends AbstractFacade
+/**
+ * @method static object get(string $name)
+ */
+class App extends Facade
 {
     public static function getFacadeAccessor(): string
     {

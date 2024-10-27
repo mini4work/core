@@ -2,6 +2,8 @@
 
 namespace Miniwork;
 
+use Miniwork\Facades\Facade;
+
 class Framework extends Container
 {
     protected array $facadeBindings = [
@@ -13,13 +15,15 @@ class Framework extends Container
     public function __construct()
     {
         parent::__construct();
-        $this->resolveDefaultBindings();
+        $this->registerFacades();
     }
 
-    protected function resolveDefaultBindings(): void
+    protected function registerFacades(): void
     {
-        foreach ($this->facadeBindings as $abstract => $concrete) {
-            $this->bind($abstract, $concrete, false);
+        Facade::setFacadeApplication($this);
+
+        foreach ($this->facadeBindings as $facade => $class) {
+            $this->bind($facade, $class, false);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Miniwork\Facades;
  * @method static string replaceTwoBitCharsToOne(string $string, int|null $maxLength = null)
  * @method static string addInvisibleCharsToLength(string $string, int $maxLength)
  */
-class Str extends AbstractFacade
+class Str extends Facade
 {
     public static function getFacadeAccessor(): string
     {

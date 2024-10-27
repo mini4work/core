@@ -4,14 +4,14 @@ namespace Miniwork;
 
 use Exception;
 
-class Container
+abstract class Container
 {
-    protected static ?Container $instance = null;
+    protected static ?Container $instance;
     private array $bindings = [];
 
     public function __construct()
     {
-        static::$instance = $this;
+        static::setInstance($this);
         $this->singleton('app', $this);
         $this->singleton(Container::class, $this);
     }
@@ -28,6 +28,11 @@ class Container
     public static function setInstance(Container $container): Container
     {
         return static::$instance = $container;
+    }
+
+    public static function resetInstance(): void
+    {
+        static::$instance = null;
     }
 
     public function bind(string $abstract, string|object|null $concrete = null, bool $shared = true): void
