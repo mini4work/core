@@ -59,9 +59,15 @@ abstract class Container
         $this->bind($abstract, $concrete, false);
     }
 
+    /**
+     * @throws Exception
+     */
     public function isShared(string $abstract): bool
     {
-        return isset($this->bindings[$abstract])?$this->bindings[$abstract]['shared']:false;
+        if (!$this->containerHas($abstract)) {
+            throw new Exception("Container don`t have bind $abstract");
+        }
+        return $this->bindings[$abstract]['shared'];
     }
 
     /**
@@ -71,7 +77,7 @@ abstract class Container
     {
         if (!$this->containerHas($abstract)) {
             if (!$this->classExists($abstract)) {
-                throw new Exception("Container don`t have bindings $abstract");
+                throw new Exception("Container don`t have bind $abstract");
             }
 
             $this->bind($abstract, new $abstract($params));

@@ -1,11 +1,13 @@
 <?php
 
 use Miniwork\Container;
+use Miniwork\Facades\Facade;
 use Miniwork\Framework;
 use Tests\Helpers\Counter;
 
-afterEach(function () {
+beforeEach(function () {
     Framework::resetInstance();
+    Facade::setFacadeApplication(null);
 });
 
 test('Check that container is singleton', function () {
@@ -60,4 +62,15 @@ test('Container and framework resolves same', function () {
     $framework = Framework::getInstance();
     $container = Container::getInstance();
     expect($framework)->toBe($container);
+});
+
+test('Check we can bind class to itself', function () {
+    $container = Framework::getInstance();
+    $container->bind(Counter::class);
+    expect(app()->get(Counter::class))->toBeInstanceOf(Counter::class);
+});
+
+test('Check we can get class without bindings', function () {
+    $container = Framework::getInstance();
+    expect(app()->get(Counter::class))->toBeInstanceOf(Counter::class);
 });

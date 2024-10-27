@@ -1,11 +1,12 @@
 <?php
 
-use Miniwork\Facades\App;
+use Miniwork\Facades\Facade;
 use Miniwork\Framework;
 use Tests\Helpers\Counter;
 
-afterEach(function () {
+beforeEach(function () {
     Framework::resetInstance();
+    Facade::setFacadeApplication(null);
 });
 
 test('Check app() helper', function () {

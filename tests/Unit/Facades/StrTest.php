@@ -1,11 +1,13 @@
 <?php
 
 use Miniwork\Facades\Bits;
+use Miniwork\Facades\Facade;
 use Miniwork\Facades\Str;
 use Miniwork\Framework;
 
-afterEach(function () {
+beforeEach(function () {
     Framework::resetInstance();
+    Facade::setFacadeApplication(null);
 });
 
 test('Check success change cyrillic character to latin', function (string $input, ?int $length, string $expected) {

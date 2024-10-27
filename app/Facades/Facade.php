@@ -4,21 +4,19 @@ namespace Miniwork\Facades;
 
 use Exception;
 use Miniwork\Container;
+use Miniwork\Framework;
 
 abstract class Facade
 {
     protected static ?Container $app;
 
-    abstract protected static function getFacadeAccessor();
+    abstract protected static function getFacadeAccessor(): string;
 
     /**
      * @throws Exception
      */
     public static function __callStatic($method, $parameters)
     {
-        if (static::isSharedAccessor()) {
-            throw new Exception('Accessor is shared, memory leak possible');
-        }
         return static::resolveFacadeInstance(static::getFacadeAccessor())->$method(...$parameters);
     }
 
@@ -38,26 +36,22 @@ abstract class Facade
      */
     protected static function resolveFacadeInstance(string $name): object
     {
-        if (!static::$app->containerHas($name)) {
-            throw new Exception('Facade accessor not registered');
+        if (!static::$app) {
+            static::$app = Framework::getInstance();
+        }
+
+        if (static::isSharedAccessor()) {
+            throw new Exception('Accessor is shared, memory leak possible');
         }
 
         return static::$app->get(static::getFacadeAccessor());
     }
 
     /**
-     * @return Container
-     */
-    protected static function getFacadeApplication(): Container
-    {
-        return static::$app;
-    }
-
-    /**
-     * @param $app
+     * @param Container|null $app
      * @return void
      */
-    public static function setFacadeApplication($app): void
+    public static function setFacadeApplication(?Container $app): void
     {
         static::$app = $app;
     }

@@ -1,10 +1,12 @@
 <?php
 
 use Miniwork\Facades\Bits;
+use Miniwork\Facades\Facade;
 use Miniwork\Framework;
 
-afterEach(function () {
+beforeEach(function () {
     Framework::resetInstance();
+    Facade::setFacadeApplication(null);
 });
 
 test('Test successful UTF-8 bits check', function (string $char) {
