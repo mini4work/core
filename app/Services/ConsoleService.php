@@ -15,10 +15,14 @@ class ConsoleService
 
         $result = '';
         foreach ($line as $text) {
-            if ($text[1] instanceof ConsoleStyles) {
-                $result .= $text[1]->value.$text[0].ConsoleStyles::ResetAllAttributes->value;
+            if (isset($text[1])) {
+                if ($text[1] instanceof ConsoleStyles) {
+                    $result .= $text[1]->value.$text[0].ConsoleStyles::ResetAllAttributes->value;
+                } else {
+                    $result .= $text[1].$text[0].ConsoleStyles::ResetAllAttributes->value;
+                }
             } else {
-                $result .= $text[1].$text[0].ConsoleStyles::ResetAllAttributes->value;
+                $result .= $text[0];
             }
         }
 
