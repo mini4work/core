@@ -17,12 +17,12 @@ class Handler
         $traceArray = [];
 
         foreach ($exception->getTrace() as $trace) {
-            $class = $trace['class'] ?? '???';
-            $type = $trace['type'] ?? '/';
-            $func = $trace['function'] ?? '???';
+            $class = $trace['class'] ?: '???';
+            $type = $trace['type'] ?: '/';
+            $func = $trace['function'] ?: '???';
 
-            $file = $trace['file'] ?? '';
-            $line = $trace['line'] ?? '';
+            $file = $trace['file'] ?: '';
+            $line = $trace['line'] ?: '';
 
             $traceArray[] = $file.':'.$line.PHP_EOL
             .$class.$type.$func.PHP_EOL
