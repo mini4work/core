@@ -5,7 +5,7 @@ namespace Miniwork\Facades;
 use Miniwork\Enums\ConsoleStyles;
 
 /**
- * @method static string markup(string $line, array|ConsoleStyles $style)
+ * @method static string writeLine(string|array $line, ConsoleStyles $style = null)
  */
 class Console extends Facade
 {
