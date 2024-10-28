@@ -47,13 +47,25 @@ class StringService
             'У' => 'Y',
         ];
 
-        if ($force) {
-            $replacePairs = array_merge($replacePairs, $forcePairs);
+        $string = $this->swapChars($string, $replacePairs, $maxLength);
+
+        if (!is_null($maxLength) && strlen($string) > $maxLength) {
+            if ($force) {
+                $string = $this->swapChars($string, $forcePairs, $maxLength);
+            } else {
+                throw new Exception('Can`t minimize text size');
+            }
         }
 
+
+        return $string;
+    }
+
+    public function swapChars(string $string, array $charsPairs, $maxLength = null): string
+    {
         for ($i = 0; $i < mb_strlen($string); $i++) {
             $char = mb_substr($string, $i, 1);
-            if (in_array($char, array_keys($replacePairs))) {
+            if (in_array($char, array_keys($charsPairs))) {
 
                 // Change symbol only if string has more bytes than $maxLength
                 if (!is_null($maxLength) && strlen($string) <= $maxLength) {
@@ -61,12 +73,8 @@ class StringService
                 }
 
                 // Concatenation for result (don`t play with string like array, when its multibyte =)
-                $string = mb_substr($string, 0, $i).$replacePairs[$char].mb_substr($string, $i + 1);
+                $string = mb_substr($string, 0, $i).$charsPairs[$char].mb_substr($string, $i + 1);
             }
-        }
-
-        if (!is_null($maxLength) && strlen($string) > $maxLength) {
-            throw new Exception('Can`t minimize text size');
         }
 
         return $string;

@@ -51,3 +51,12 @@ test('Check success bits placement', function (string $input, int $length, strin
     ['Привіт', 21, 'Привіт​​​'],
 ]);
 
+test('Check success char swap with force', function (string $input, int $length, string $expected) {
+    expect(Str::replaceTwoBitCharsToOne($input, $length, true))->toBe($expected);
+})->with([
+    ['Увалень', 14, 'Увалень'],
+    ['Увалень', 13, 'Увaлень'],
+    ['Увалень', 12, 'Увaлeнь'],
+    ['Увалень', 11, 'Yвaлeнь'],
+    ['Увалень', 10, 'Yвaлeнb'],
+]);
