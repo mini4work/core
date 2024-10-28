@@ -2,7 +2,6 @@
 
 namespace Miniwork\Facades;
 
-
 /**
  * @method static bool isUTF8StartByte(string $hex)
  * @method static string getTwoHexDigits(int $number)

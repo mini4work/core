@@ -9,10 +9,11 @@ class StringService
     /**
      * @param string $string
      * @param int|null $maxLength
+     * @param bool $force
      * @return string
      * @throws Exception
      */
-    public function replaceTwoBitCharsToOne(string $string, ?int $maxLength = null): string
+    public function replaceTwoBitCharsToOne(string $string, ?int $maxLength = null, bool $force = false): string
     {
         $replacePairs = [
             'а' => 'a', // cyrillic "a" to latin "a"
@@ -36,6 +37,19 @@ class StringService
             'М' => 'M',
             'Т' => 'T',
         ];
+
+        $forcePairs = [
+            'к' => 'k',
+            'г' => 'r',
+            'З' => '3',
+            'п' => 'n',
+            'ь' => 'b',
+            'У' => 'Y',
+        ];
+
+        if ($force) {
+            $replacePairs = array_merge($replacePairs, $forcePairs);
+        }
 
         for ($i = 0; $i < mb_strlen($string); $i++) {
             $char = mb_substr($string, $i, 1);
