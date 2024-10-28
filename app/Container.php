@@ -35,7 +35,7 @@ abstract class Container
         static::$instance = null;
     }
 
-    public function bind(string $abstract, string|object|null $concrete = null, bool $shared = true): void
+    public function bind(string $abstract, string|object|null $concrete = null, bool $shared = false): void
     {
         if (is_null($concrete)) {
             $concrete = $abstract;
@@ -56,7 +56,7 @@ abstract class Container
 
     public function singleton(string $abstract, string|object|null $concrete = null): void
     {
-        $this->bind($abstract, $concrete, false);
+        $this->bind($abstract, $concrete, true);
     }
 
     /**
@@ -87,7 +87,7 @@ abstract class Container
         $isShared = $this->bindings[$abstract]['shared'];
         $hasInstances = count($this->bindings[$abstract]['objects']);
 
-        if ((!$isShared && !$hasInstances) || $isShared) {
+        if (($isShared && !$hasInstances) || !$isShared) {
             $this->bindings[$abstract]['objects'][] = new $this->bindings[$abstract]['concrete']($params);
         }
 
