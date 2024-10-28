@@ -21,7 +21,10 @@ class Handler
             $type = $trace['type'] ?? '/';
             $func = $trace['function'] ?? '???';
 
-            $traceArray[] = $trace['file'].':'.$trace['line'].PHP_EOL
+            $file = $trace['file'] ?? '';
+            $line = $trace['line'] ?? '';
+
+            $traceArray[] = $file.':'.$line.PHP_EOL
             .$class.$type.$func.PHP_EOL
             . json_encode($trace['args']);
         }
