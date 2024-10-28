@@ -40,7 +40,7 @@ abstract class Facade
             static::$app = Framework::getInstance();
         }
 
-        if (static::isSharedAccessor()) {
+        if (!static::isSharedAccessor()) {
             throw new Exception('Accessor is shared, memory leak possible');
         }
 
