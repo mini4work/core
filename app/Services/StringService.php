@@ -39,6 +39,7 @@ class StringService
         ];
 
         $forcePairs = [
+            'и' => 'u',
             'к' => 'k',
             'г' => 'r',
             'З' => '3',
