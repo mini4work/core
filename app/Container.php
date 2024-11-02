@@ -116,13 +116,11 @@ abstract class Container
 
         $newParams = [];
 
-        foreach ($constructor->getParameters() as $dependency) {
-            try {
-                $newParams[] = $this->make($dependency->getType()->getName());
-            } catch (Exception $e) {
-                var_dump($e);
-                $newParams[] = array_shift($params);
-            }
+        foreach ($constructor->getParameters() as $constructorParameter) {
+            $newParams[] = match (array_key_exists($constructorParameter->getName(), $params)) {
+                true => $params[$constructorParameter->getName()],
+                false => $this->make($constructorParameter->getType()->getName()),
+            };
         }
 
         return $reflection->newInstance(...$newParams);
