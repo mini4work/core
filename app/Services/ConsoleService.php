@@ -8,6 +8,10 @@ class ConsoleService
 {
     public function writeLine(string|array $line, ConsoleStyles $style = null): void
     {
+        if (is_null($style)) {
+            $style = ConsoleStyles::TextDefault;
+        }
+
         if (!is_array($line)) {
             echo $style->value . $line . ConsoleStyles::ResetAllAttributes->value . PHP_EOL;
             return;
