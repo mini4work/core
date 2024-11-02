@@ -38,10 +38,14 @@ abstract class Container
         static::$instance = null;
     }
 
-    public function bind(string $abstract, string|object|null $concrete = null, bool $shared = false): void
+    public function bind(string $abstract, string|object|callable|null $concrete = null, bool $shared = false): void
     {
         if (is_null($concrete)) {
             $concrete = $abstract;
+        }
+
+        if (is_callable($concrete)) {
+            $concrete = $concrete($this);
         }
 
         $concreteName = $concrete;
@@ -57,7 +61,7 @@ abstract class Container
         $this->bindings[$abstract]['objects'] = is_object($concrete)?[$concrete]:[];
     }
 
-    public function singleton(string $abstract, string|object|null $concrete = null): void
+    public function singleton(string $abstract, string|object|callable|null $concrete = null): void
     {
         $this->bind($abstract, $concrete, true);
     }
