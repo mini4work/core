@@ -12,6 +12,6 @@ if (!function_exists('app')) {
             return Framework::getInstance();
         }
 
-        return Framework::getInstance()->get($abstract, $parameters);
+        return Framework::getInstance()->make($abstract, $parameters);
     }
 }

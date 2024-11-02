@@ -3,6 +3,8 @@
 namespace Miniwork;
 
 use Exception;
+use ReflectionClass;
+use ReflectionException;
 
 abstract class Container
 {
@@ -13,6 +15,7 @@ abstract class Container
     {
         static::setInstance($this);
         $this->singleton('app', $this);
+        $this->singleton(Container::class, $this);
         $this->singleton(Container::class, $this);
     }
 
@@ -73,14 +76,14 @@ abstract class Container
     /**
      * @throws Exception
      */
-    public function get(string $abstract, ?array $params = null): object
+    public function make(string $abstract, ?array $params = []): object
     {
         if (!$this->containerHas($abstract)) {
             if (!$this->classExists($abstract)) {
                 throw new Exception("Container don`t have bind $abstract");
             }
 
-            $this->bind($abstract, new $abstract($params));
+            $this->bind($abstract, $this->resolve($abstract, $params));
             return end($this->bindings[$abstract]['objects']);
         }
 
@@ -88,10 +91,41 @@ abstract class Container
         $hasInstances = count($this->bindings[$abstract]['objects']);
 
         if (($isShared && !$hasInstances) || !$isShared) {
-            $this->bindings[$abstract]['objects'][] = new $this->bindings[$abstract]['concrete']($params);
+            $this->bindings[$abstract]['objects'][] = $this->resolve($this->bindings[$abstract]['concrete'], $params);
         }
 
         return end($this->bindings[$abstract]['objects']);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function resolve(string $concrete, array $params = []): object
+    {
+        try {
+            $reflection = new ReflectionClass($concrete);
+        } catch (ReflectionException) {
+            throw new Exception("Class $concrete does not exist");
+        }
+
+        $constructor = $reflection->getConstructor();
+
+        if (is_null($constructor)) {
+            return $reflection->newInstance();
+        }
+
+        $newParams = [];
+
+        foreach ($constructor->getParameters() as $dependency) {
+            try {
+                $newParams[] = $this->make($dependency->getType()->getName());
+            } catch (Exception $e) {
+                var_dump($e);
+                $newParams[] = array_shift($params);
+            }
+        }
+
+        return $reflection->newInstance(...$newParams);
     }
 
     public function containerHas(string $abstract): bool

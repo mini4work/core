@@ -15,9 +15,9 @@ abstract class Facade
     /**
      * @throws Exception
      */
-    public static function __callStatic($method, $parameters)
+    public static function __callStatic(string $method, array $parameters)
     {
-        return static::resolveFacadeInstance(static::getFacadeAccessor())->$method(...$parameters);
+        return static::resolveFacadeInstance()->$method(...$parameters);
     }
 
     /**
@@ -30,11 +30,10 @@ abstract class Facade
     }
 
     /**
-     * @param string $name
      * @return object
      * @throws Exception
      */
-    protected static function resolveFacadeInstance(string $name): object
+    protected static function resolveFacadeInstance(): object
     {
         if (!static::$app) {
             static::$app = Framework::getInstance();
@@ -44,7 +43,7 @@ abstract class Facade
             throw new Exception('Accessor is shared, memory leak possible');
         }
 
-        return static::$app->get(static::getFacadeAccessor());
+        return static::$app->make(static::getFacadeAccessor());
     }
 
     /**

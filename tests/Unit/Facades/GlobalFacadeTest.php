@@ -25,6 +25,6 @@ test('Check we get exception when use facades without bindings', function () {
 
 test('Check we get exception when get not bound relation', function () {
     $name = 'counter';
-    expect(fn() => app()->get($name))
+    expect(fn() => app()->make($name))
         ->toThrow(Exception::class, 'Container don`t have bind '.$name);
 });

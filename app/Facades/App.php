@@ -3,7 +3,8 @@
 namespace Miniwork\Facades;
 
 /**
- * @method static object get(string $name)
+ * @method static object make(string $name)
+ * @method static object resolve(string $name)
  */
 class App extends Facade
 {

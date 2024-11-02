@@ -18,10 +18,10 @@ test('Check app() helper', function () {
 
 test('Check app() helper returns concrete objects', function () {
     $instance = Framework::getInstance();
-    $instance->bind('counter', Counter::class, false);
+    $instance->bind('counter', Counter::class, true);
 
     /** @var Counter $counterInstance */
-    $counterInstance = $instance->get('counter');
+    $counterInstance = $instance->make('counter');
     $counterInstance->setCount(5);
 
     /** @var Counter $counterHelperInstance */

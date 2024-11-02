@@ -20,15 +20,15 @@ test('Check that container can return different instances', function () {
     $container = new Framework();
     $container->bind('test', Counter::class);
 
-    expect($container->isShared('test'))->toBeTrue();
+    expect($container->isShared('test'))->toBeFalse();
 
     /** @var Counter $counter1 */
-    $counter1 = $container->get('test');
+    $counter1 = $container->make('test');
     $counter1->setCount(5);
     expect($counter1->getCount() === 5)->toBeTrue();
 
     /** @var Counter $counter2 */
-    $counter2 = $container->get('test');
+    $counter2 = $container->make('test');
     $counter2->setCount(10);
     expect($counter2->getCount() === 10)->toBeTrue()
         ->and($counter1->getCount() !== $counter2->getCount())->toBeTrue();
@@ -38,15 +38,15 @@ test('Check that container can return same instance when its singleton', functio
     $container = Framework::getInstance();
     $container->singleton('test', Counter::class);
 
-    expect($container->isShared('test'))->toBeFalse();
+    expect($container->isShared('test'))->toBeTrue();
 
     /** @var Counter $counter1 */
-    $counter1 = $container->get('test');
+    $counter1 = $container->make('test');
     $counter1->setCount(5);
     expect($counter1->getCount() === 5)->toBeTrue();
 
     /** @var Counter $counter2 */
-    $counter2 = $container->get('test');
+    $counter2 = $container->make('test');
     $counter2->setCount(10);
     expect($counter2->getCount() === 10)->toBeTrue()
         ->and($counter1->getCount() === $counter2->getCount())->toBeTrue();
@@ -54,7 +54,7 @@ test('Check that container can return same instance when its singleton', functio
 
 test('Can create framework', function () {
     $framework = new Framework;
-    $self = $framework->get('app');
+    $self = $framework->make('app');
     expect($self)->toBeInstanceOf(Framework::class)->toBe($framework);
 });
 
@@ -67,10 +67,10 @@ test('Container and framework resolves same', function () {
 test('Check we can bind class to itself', function () {
     $container = Framework::getInstance();
     $container->bind(Counter::class);
-    expect(app()->get(Counter::class))->toBeInstanceOf(Counter::class);
+    expect(app()->make(Counter::class))->toBeInstanceOf(Counter::class);
 });
 
 test('Check we can get class without bindings', function () {
     $container = Framework::getInstance();
-    expect(app()->get(Counter::class))->toBeInstanceOf(Counter::class);
+    expect(app()->make(Counter::class))->toBeInstanceOf(Counter::class);
 });

@@ -2,7 +2,7 @@
 
 namespace Tests\Helpers;
 
-class Counter
+class Counter implements CounterInterface
 {
     private ?int $counter = null;
 
