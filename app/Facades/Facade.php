@@ -35,7 +35,7 @@ abstract class Facade
      */
     protected static function resolveFacadeInstance(): object
     {
-        if (!static::$app) {
+        if (!isset(static::$app)) {
             static::$app = Framework::getInstance();
         }
 
