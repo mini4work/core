@@ -4,6 +4,7 @@ namespace Miniwork\Exception;
 
 use Miniwork\Enums\ConsoleStyles;
 use Miniwork\Facades\Console;
+use Miniwork\Facades\Str;
 use Throwable;
 
 class Handler
@@ -11,8 +12,19 @@ class Handler
     public static function cause(Throwable $exception): void
     {
         $titleWidth = 70;
+        $preTab = 3;
+        $message = $exception->getMessage();
+        $messageLength = mb_strlen($message);
+        $boxDelta = $titleWidth - $preTab - $messageLength;
+
+        if ($boxDelta <= 0) {
+            $message = str_repeat(' ', $preTab) . mb_substr($message, 0, $messageLength + $boxDelta - 4) . '…   ';
+        } else {
+            $message = str_repeat(' ', $preTab) . $message . str_repeat(' ', $boxDelta);
+        }
+
         Console::writeLine(str_repeat(' ', $titleWidth), ConsoleStyles::BgRed);
-        Console::writeLine(str_repeat(' ', 3).$exception->getMessage().str_repeat(' ', $titleWidth - 3 - mb_strlen($exception->getMessage())), ConsoleStyles::BgRed);
+        Console::writeLine($message, ConsoleStyles::BgRed);
         Console::writeLine(str_repeat(' ', $titleWidth), ConsoleStyles::BgRed);
 
         if (count($exception->getTrace())) {
