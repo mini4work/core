@@ -13,15 +13,25 @@ class ConsoleService
         }
 
         if (!is_array($line)) {
-            echo $style->value . $line . ConsoleStyles::ResetAllAttributes->value . PHP_EOL;
+            echo $style->format() . $line . ConsoleStyles::ResetAllAttributes() . PHP_EOL;
             return;
         }
 
         $result = '';
         foreach ($line as $text) {
             if (is_array($text) && isset($text[1])) {
-                $style = ($text[1] instanceof ConsoleStyles)?$text[1]->value:$text[1];
-                $result .= $style . $text[0] . ConsoleStyles::ResetAllAttributes->value;
+
+                $style = $text[1];
+
+                if ($text[1] instanceof ConsoleStyles) {
+                    $style = $text[1]->format();
+                }
+
+                if (is_array($text[1])) {
+                    $style = ConsoleStyles::applyStyles($text[1]);
+                }
+
+                $result .= $style . $text[0] . ConsoleStyles::ResetAllAttributes();
             } else {
                 $result .= $text[0];
             }

@@ -5,61 +5,73 @@ namespace M4W\Enums;
 enum ConsoleStyles: string
 {
     // Formatting
-    case FormatBoldOn = "\e[1m";
-    case FormatBoldOff = "\e[21m";
-    case FormatItalicOn = "\e[3m";
-    case FormatItalicOff = "\e[23m";
-    case FormatUnderlineOn = "\e[4m";
-    case FormatUnderlineOff = "\e[24m";
-    case FormatBlinkOn = "\e[5m";
-    case FormatBlinkOff = "\e[25m";
-    case FormatReverseOn = "\e[7m"; // Swap background and text color
-    case FormatReverseOff = "\e[27m"; // Swap background and text color
-    case FormatStrikethroughOn = "\e[9m";
-    case FormatStrikethroughOff = "\e[29m";
+    case FormatBoldOn = "1";
+    case FormatBoldOff = "21";
+    case FormatItalicOn = "3";
+    case FormatItalicOff = "23";
+    case FormatUnderlineOn = "4";
+    case FormatUnderlineOff = "24";
+    case FormatBlinkOn = "5";
+    case FormatBlinkOff = "25";
+    case FormatReverseOn = "7"; // Swap background and text color
+    case FormatReverseOff = "27"; // Swap background and text color
+    case FormatStrikethroughOn = "9";
+    case FormatStrikethroughOff = "29";
 
     // Text Colors
-    case TextBlack = "\e[30m";
-    case TextRed = "\e[31m";
-    case TextGreen = "\e[32m";
-    case TextYellow = "\e[33m";
-    case TextBlue = "\e[34m";
-    case TextMagenta = "\e[35m";
-    case TextCyan = "\e[36m";
-    case TextGrayLight = "\e[37m";
-    case TextDefault = "\e[39m";
-    case TextGrayDark = "\e[90m";
-    case TextRedLight = "\e[91m";
-    case TextGreenLight = "\e[92m";
-    case TextYellowLight = "\e[93m";
-    case TextBlueLight = "\e[94m";
-    case TextMagentaLight = "\e[95m";
-    case TextCyanLight = "\e[96m";
-    case TextWhite = "\e[97m";
+    case TextBlack = "30";
+    case TextRed = "31";
+    case TextGreen = "32";
+    case TextYellow = "33";
+    case TextBlue = "34";
+    case TextMagenta = "35";
+    case TextCyan = "36";
+    case TextGrayLight = "37";
+    case TextDefault = "39";
+    case TextGrayDark = "90";
+    case TextRedLight = "91";
+    case TextGreenLight = "92";
+    case TextYellowLight = "93";
+    case TextBlueLight = "94";
+    case TextMagentaLight = "95";
+    case TextCyanLight = "96";
+    case TextWhite = "97";
 
     // BackgroundColors
-    case BgBlack = "\e[40m";
-    case BgRed = "\e[41m";
-    case BgGreen = "\e[42m";
-    case BgYellow = "\e[43m";
-    case BgBlue = "\e[44m";
-    case BgMagenta = "\e[45m";
-    case BgCyan = "\e[46m";
-    case BgGrayLight = "\e[47m";
-    case BgGrayDark = "\e[100m";
-    case BgRedLight = "\e[101m";
-    case BgGreenLight = "\e[102m";
-    case BgYellowLight = "\e[103m";
-    case BgBlueLight = "\e[104m";
-    case BgMagentaLight = "\e[105m";
-    case BgCyanLight = "\e[106m";
-    case BgWhite = "\e[107m";
+    case BgBlack = "40";
+    case BgRed = "41";
+    case BgGreen = "42";
+    case BgYellow = "43";
+    case BgBlue = "44";
+    case BgMagenta = "45";
+    case BgCyan = "46";
+    case BgGrayLight = "47";
+    case BgGrayDark = "100";
+    case BgRedLight = "101";
+    case BgGreenLight = "102";
+    case BgYellowLight = "103";
+    case BgBlueLight = "104";
+    case BgMagentaLight = "105";
+    case BgCyanLight = "106";
+    case BgWhite = "107";
 
-    // Removing characters
-    case CharBackspace = "\e1P";
-    case CharBackspaceNoMoveCursor = "\e1X";
-    case CharRemoveLine = "\e1M";
+    public function format(): string
+    {
+        return "\e[" . $this->value . "m";
+    }
 
-    case ClearScreen = "\e[H\e[2J";
-    case ResetAllAttributes = "\e(B\e[m";
+    public static function resetAllAttributes(): string
+    {
+        return "\e(B\e[m";
+    }
+
+    public static function clearScreen(): string
+    {
+        return "\e[H\e[2J";
+    }
+
+    public static function applyStyles(array $syles): string
+    {
+        return "\e[" . implode(",", $syles) . "m";
+    }
 }
