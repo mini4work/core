@@ -4,7 +4,6 @@ namespace M4W\Exception;
 
 use M4W\Enums\ConsoleStyles;
 use M4W\Facades\Console;
-use M4W\Facades\Str;
 use Throwable;
 
 class Handler
@@ -31,12 +30,12 @@ class Handler
             Console::writeLine(PHP_EOL.'Trace:', ConsoleStyles::FormatBoldOn);
 
             foreach ($exception->getTrace() as $trace) {
-                $class = $trace['class'] ?: '???';
-                $type = $trace['type'] ?: '/';
-                $func = $trace['function'] ?: '???';
+                $class = $trace['class'] ?? '???';
+                $type = $trace['type'] ?? '/';
+                $func = $trace['function'] ?? '???';
 
-                $file = $trace['file'] ?: '';
-                $line = $trace['line'] ?: '';
+                $file = $trace['file'] ?? '';
+                $line = $trace['line'] ?? '';
 
                 $traceArray = $file.':'.$line.PHP_EOL
                     .$class.$type.$func.PHP_EOL
