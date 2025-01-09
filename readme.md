@@ -1,6 +1,5 @@
-<img align="right" width="150" height="150" src="https://raw.githubusercontent.com/mini4work/core/47eba08f5b4495cb0162990b50024c948155337b/logo/Mini4WorkLogo.svg" alt="Mini4Work Logo" title="Logo">
-
 # Mini4Work
+<img align="right" width="150" height="150" src="https://raw.githubusercontent.com/mini4work/core/47eba08f5b4495cb0162990b50024c948155337b/logo/Mini4WorkLogo.svg" alt="Mini4Work Logo" title="Logo">
 
 **Mini4Work** is a lightweight, minimalistic, and universal PHP framework designed for developers who value simplicity and flexibility. It offers a highly customizable block-based structure and a powerful dependency injection container, allowing you to build exactly what you need without unnecessary overhead.
 
