@@ -1,9 +1,9 @@
 <?php
 
-use Miniwork\Facades\Bits;
-use Miniwork\Facades\Facade;
-use Miniwork\Facades\Str;
-use Miniwork\Framework;
+use M4W\Facades\Bits;
+use M4W\Facades\Facade;
+use M4W\Facades\Str;
+use M4W\Framework;
 
 beforeEach(function () {
     Framework::resetInstance();
@@ -16,7 +16,7 @@ beforeEach(function () {
 
 test('App facade returns current app instance', function () {
     $instance = Framework::getInstance();
-    expect(\Miniwork\Facades\App::make('app'))->toBe($instance);
+    expect(\M4W\Facades\App::make('app'))->toBe($instance);
 });
 
 // Bits Facade

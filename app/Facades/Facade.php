@@ -1,10 +1,10 @@
 <?php
 
-namespace Miniwork\Facades;
+namespace M4W\Facades;
 
 use Exception;
-use Miniwork\Container;
-use Miniwork\Framework;
+use M4W\Container;
+use M4W\Framework;
 
 abstract class Facade
 {

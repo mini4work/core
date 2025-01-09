@@ -1,12 +1,12 @@
 <?php
 
-use Miniwork\Framework;
+use M4W\Framework;
 
 if (!function_exists('app')) {
     /**
      * @throws Exception
      */
-    function app(string $abstract = null, array $parameters = [])
+    function app(?string $abstract = null, array $parameters = [])
     {
         if (is_null($abstract)) {
             return Framework::getInstance();

@@ -1,8 +1,8 @@
 <?php
 
-namespace Miniwork\Facades;
+namespace M4W\Facades;
 
-use Miniwork\Enums\ConsoleStyles;
+use M4W\Enums\ConsoleStyles;
 
 /**
  * @method static string writeLine(string|array $line, ConsoleStyles $style = null)

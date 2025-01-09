@@ -1,7 +1,6 @@
 <?php
 
-namespace Miniwork;
-
+namespace M4W;
 
 class Framework extends Container
 {

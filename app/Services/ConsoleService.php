@@ -1,12 +1,12 @@
 <?php
 
-namespace Miniwork\Services;
+namespace M4W\Services;
 
-use Miniwork\Enums\ConsoleStyles;
+use M4W\Enums\ConsoleStyles;
 
 class ConsoleService
 {
-    public function writeLine(string|array $line, ConsoleStyles $style = null): void
+    public function writeLine(string|array $line, ?ConsoleStyles $style = null): void
     {
         if (is_null($style)) {
             $style = ConsoleStyles::TextDefault;

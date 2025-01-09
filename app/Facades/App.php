@@ -1,6 +1,6 @@
 <?php
 
-namespace Miniwork\Facades;
+namespace M4W\Facades;
 
 /**
  * @method static object make(string $name)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Miniwork\Facades;
+namespace M4W\Facades;
 
 /**
  * @method static string replaceTwoBitCharsToOne(string $string, int|null $maxLength = null, bool $force = false)

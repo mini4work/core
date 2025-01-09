@@ -1,6 +1,6 @@
 <?php
 
-namespace Miniwork;
+namespace M4W;
 
 use Exception;
 use ReflectionClass;

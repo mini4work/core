@@ -1,8 +1,8 @@
 <?php
 
-use Miniwork\Container;
-use Miniwork\Facades\Facade;
-use Miniwork\Framework;
+use M4W\Container;
+use M4W\Facades\Facade;
+use M4W\Framework;
 use Tests\Helpers\Counter;
 
 beforeEach(function () {

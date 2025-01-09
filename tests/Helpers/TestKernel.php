@@ -3,9 +3,9 @@
 namespace Tests\Helpers;
 
 use Exception;
-use Miniwork\Framework;
-use Miniwork\Providers\AbstractServiceProvider;
-use Miniwork\Providers\FacadeServiceProvider;
+use M4W\Framework;
+use M4W\Providers\AbstractServiceProvider;
+use M4W\Providers\FacadeServiceProvider;
 
 class TestKernel
 {

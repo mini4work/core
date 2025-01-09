@@ -1,6 +1,6 @@
 <?php
 
-namespace Miniwork\Services;
+namespace M4W\Services;
 
 use Exception;
 

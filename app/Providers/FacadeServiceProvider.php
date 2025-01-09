@@ -1,15 +1,15 @@
 <?php
 
-namespace Miniwork\Providers;
+namespace M4W\Providers;
 
-use Miniwork\Facades\Facade;
+use M4W\Facades\Facade;
 
 class FacadeServiceProvider extends AbstractServiceProvider
 {
     protected array $facadeBindings = [
-        'strings' => \Miniwork\Services\StringService::class,
-        'bits' => \Miniwork\Services\BitsManipulationService::class,
-        'consoles' => \Miniwork\Services\ConsoleService::class,
+        'strings' => \M4W\Services\StringService::class,
+        'bits' => \M4W\Services\BitsManipulationService::class,
+        'consoles' => \M4W\Services\ConsoleService::class,
     ];
 
     public function register(): void

@@ -2,7 +2,7 @@
 
 namespace Tests\Helpers;
 
-use Miniwork\Facades\Facade;
+use M4W\Facades\Facade;
 
 /**
  * @method static int getCounter()

@@ -1,6 +1,6 @@
 {
   "name": "mini4work/core",
-  "description": "Minimalistic framework with Service Container and Dependency Injection",
+  "description": "A minimalistic and flexible PHP framework with a lightweight core and modular structure.",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
@@ -12,16 +12,16 @@
   "require": {
     "php": "^8.3"
   },
+  "require-dev": {
+    "pestphp/pest": "^3.5"
+  },
   "autoload": {
     "files": [
       "app/helpers.php"
     ],
     "psr-4": {
-      "Miniwork\\": "app/"
+      "M4W\\": "app/"
     }
-  },
-  "require-dev": {
-    "pestphp/pest": "^3.5"
   },
   "autoload-dev": {
     "psr-4": {
