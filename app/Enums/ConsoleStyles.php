@@ -46,6 +46,14 @@ enum ConsoleStyles: string
     case BgMagenta = "\e[45m";
     case BgCyan = "\e[46m";
     case BgGrayLight = "\e[47m";
+    case BgGrayDark = "\e[100m";
+    case BgRedLight = "\e[101m";
+    case BgGreenLight = "\e[102m";
+    case BgYellowLight = "\e[103m";
+    case BgBlueLight = "\e[104m";
+    case BgMagentaLight = "\e[105m";
+    case BgCyanLight = "\e[106m";
+    case BgWhite = "\e[107m";
 
     // Removing characters
     case CharBackspace = "\e1P";
