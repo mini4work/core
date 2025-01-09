@@ -16,7 +16,6 @@ abstract class Container
         static::setInstance($this);
         $this->singleton('app', $this);
         $this->singleton(Container::class, $this);
-        $this->singleton(Container::class, $this);
     }
 
     public static function getInstance(): Container
