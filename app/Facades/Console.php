@@ -5,7 +5,7 @@ namespace M4W\Facades;
 use M4W\Enums\ConsoleStyles;
 
 /**
- * @method static string writeLine(string|array $line, ConsoleStyles $style = null)
+ * @method static string writeLine(string|array|null $line = null, ?ConsoleStyles $style = null)
  */
 class Console extends Facade
 {

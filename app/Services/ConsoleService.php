@@ -6,8 +6,13 @@ use M4W\Enums\ConsoleStyles;
 
 class ConsoleService
 {
-    public function writeLine(string|array $line, ?ConsoleStyles $style = null): void
+    public function writeLine(string|array|null $line = null, ?ConsoleStyles $style = null): void
     {
+        if (is_null($line)) {
+            echo PHP_EOL;
+            return;
+        }
+
         if (is_null($style)) {
             $style = ConsoleStyles::TextDefault;
         }
