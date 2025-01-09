@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/mini4work/core/47eba08f5b4495cb0162990b50024c948155337b/logo/Mini4WorkLogo.svg)
+<img align="right" width="150" height="150" src="https://raw.githubusercontent.com/mini4work/core/47eba08f5b4495cb0162990b50024c948155337b/logo/Mini4WorkLogo.svg" alt="Mini4Work Logo" title="Logo">
 
 # Mini4Work
 
