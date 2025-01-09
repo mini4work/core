@@ -3,49 +3,24 @@
 namespace Tests\Helpers;
 
 use Exception;
+use M4W\Abstract\AbstractKernel;
+use M4W\Facades\Console;
 use M4W\Framework;
 use M4W\Providers\AbstractServiceProvider;
 use M4W\Providers\FacadeServiceProvider;
 
-class TestKernel
+class TestKernel extends AbstractKernel
 {
-    protected Framework $app;
 
-    /**
-     * @throws Exception
-     */
-    public function __construct()
+    public function handle(): void
     {
-        $this->app = app();
-        $this->serviceProviderLoad();
+        Console::writeLine('Hello World!');
     }
 
-    /**
-     * @throws Exception
-     */
-    public function handle(): void {}
-
-    /**
-     * @throws Exception
-     */
-    private function serviceProviderLoad(): void
+    public function serviceProviders(): array
     {
-        $providers = [
+        return [
             FacadeServiceProvider::class,
         ];
-
-        foreach ($providers as $provider) {
-            if (!class_exists($provider)) {
-                throw new Exception('Provider class ' . $provider . ' does not exist');
-            }
-
-            $providerInstance = new $provider($this->app);
-
-            if (!($providerInstance instanceof AbstractServiceProvider)) {
-                throw new Exception('Provider class ' . $provider . ' does not implement AbstractServiceProvider');
-            }
-
-            $providerInstance->register();
-        }
     }
 }
