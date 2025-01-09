@@ -76,6 +76,6 @@ enum ConsoleStyles: string
         foreach ($syles as $style) {
             $stylesValuesArray[] = $style->value;
         }
-        return "\e[" . implode(",", $stylesValuesArray) . "m";
+        return "\e[" . implode(";", $stylesValuesArray) . "m";
     }
 }
