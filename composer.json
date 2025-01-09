@@ -2,7 +2,7 @@
   "name": "mini4work/core",
   "description": "A minimalistic and flexible PHP framework with a lightweight core and modular structure.",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "MNaz",
