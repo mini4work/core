@@ -8,5 +8,5 @@ abstract class AbstractServiceProvider
 {
     public function __construct(protected Framework $app) {}
 
-    abstract public function register();
+    abstract public function register(): void;
 }
