@@ -72,6 +72,10 @@ enum ConsoleStyles: string
 
     public static function applyStyles(array $syles): string
     {
-        return "\e[" . implode(",", $syles) . "m";
+        $stylesValuesArray = [];
+        foreach ($syles as $style) {
+            $stylesValuesArray[] = $style->value;
+        }
+        return "\e[" . implode(",", $stylesValuesArray) . "m";
     }
 }
