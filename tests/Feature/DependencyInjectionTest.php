@@ -1,6 +1,6 @@
 <?php
 
-use M4W\Framework;
+use M4W\Core\Framework;
 use Tests\Helpers\Counter;
 use Tests\Helpers\CounterInterface;
 use Tests\Helpers\TestService;

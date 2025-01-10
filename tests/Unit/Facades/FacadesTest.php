@@ -1,14 +1,16 @@
 <?php
 
-use M4W\Facades\Bits;
-use M4W\Facades\Facade;
-use M4W\Facades\Str;
-use M4W\Framework;
+use M4W\Core\Facades\App;
+use M4W\Core\Facades\Bits;
+use M4W\Core\Facades\Facade;
+use M4W\Core\Facades\Str;
+use M4W\Core\Framework;
+use Tests\Helpers\TestKernel;
 
 beforeEach(function () {
     Framework::resetInstance();
     $framework = Framework::getInstance();
-    $framework->make(\Tests\Helpers\TestKernel::class);
+    $framework->make(TestKernel::class);
     Facade::setFacadeApplication($framework);
 });
 
@@ -16,7 +18,7 @@ beforeEach(function () {
 
 test('App facade returns current app instance', function () {
     $instance = Framework::getInstance();
-    expect(\M4W\Facades\App::make('app'))->toBe($instance);
+    expect(App::make('app'))->toBe($instance);
 });
 
 // Bits Facade

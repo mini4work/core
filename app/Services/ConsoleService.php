@@ -1,8 +1,8 @@
 <?php
 
-namespace M4W\Services;
+namespace M4W\Core\Services;
 
-use M4W\Enums\ConsoleStyles;
+use M4W\Core\Enums\ConsoleStyles;
 
 class ConsoleService
 {

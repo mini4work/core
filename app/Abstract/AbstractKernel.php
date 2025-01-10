@@ -1,12 +1,12 @@
 <?php
 
-namespace M4W\Abstract;
+namespace M4W\Core\Abstract;
 
 use Exception;
-use M4W\Framework;
-use M4W\Interfaces\Kernel;
-use M4W\Providers\AbstractServiceProvider;
-use M4W\Providers\FacadeServiceProvider;
+use M4W\Core\Framework;
+use M4W\Core\Interfaces\Kernel;
+use M4W\Core\Providers\AbstractServiceProvider;
+use M4W\Core\Providers\FacadeServiceProvider;
 
 abstract class AbstractKernel implements Kernel
 {

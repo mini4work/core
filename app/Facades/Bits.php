@@ -1,6 +1,6 @@
 <?php
 
-namespace M4W\Facades;
+namespace M4W\Core\Facades;
 
 /**
  * @method static bool isUTF8StartByte(string $hex)

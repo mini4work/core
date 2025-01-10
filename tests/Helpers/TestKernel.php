@@ -2,8 +2,8 @@
 
 namespace Tests\Helpers;
 
-use M4W\Abstract\AbstractKernel;
-use M4W\Facades\Console;
+use M4W\Core\Abstract\AbstractKernel;
+use M4W\Core\Facades\Console;
 
 class TestKernel extends AbstractKernel
 {

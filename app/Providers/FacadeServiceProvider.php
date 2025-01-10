@@ -1,15 +1,18 @@
 <?php
 
-namespace M4W\Providers;
+namespace M4W\Core\Providers;
 
-use M4W\Facades\Facade;
+use M4W\Core\Facades\Facade;
+use M4W\Core\Services\BitsManipulationService;
+use M4W\Core\Services\ConsoleService;
+use M4W\Core\Services\StringService;
 
 class FacadeServiceProvider extends AbstractServiceProvider
 {
     protected array $facadeBindings = [
-        'strings' => \M4W\Services\StringService::class,
-        'bits' => \M4W\Services\BitsManipulationService::class,
-        'consoles' => \M4W\Services\ConsoleService::class,
+        'strings' => StringService::class,
+        'bits' => BitsManipulationService::class,
+        'consoles' => ConsoleService::class,
     ];
 
     public function register(): void

@@ -1,6 +1,6 @@
 <?php
 
-namespace M4W;
+namespace M4W\Core;
 
 use Exception;
 use ReflectionClass;

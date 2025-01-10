@@ -1,6 +1,6 @@
 <?php
 
-namespace M4W\Interfaces;
+namespace M4W\Core\Interfaces;
 
 interface Kernel
 {

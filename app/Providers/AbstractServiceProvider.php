@@ -1,8 +1,8 @@
 <?php
 
-namespace M4W\Providers;
+namespace M4W\Core\Providers;
 
-use M4W\Framework;
+use M4W\Core\Framework;
 
 abstract class AbstractServiceProvider
 {

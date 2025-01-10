@@ -1,7 +1,7 @@
 <?php
 
-use M4W\Facades\Facade;
-use M4W\Framework;
+use M4W\Core\Facades\Facade;
+use M4W\Core\Framework;
 use Tests\Helpers\Counter;
 use Tests\Helpers\CounterFacade;
 

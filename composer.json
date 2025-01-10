@@ -20,7 +20,7 @@
       "app/helpers.php"
     ],
     "psr-4": {
-      "M4W\\": "app/"
+      "M4W\\Core\\": "app/"
     }
   },
   "autoload-dev": {

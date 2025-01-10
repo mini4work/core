@@ -1,6 +1,6 @@
 <?php
 
-use M4W\Framework;
+use M4W\Core\Framework;
 
 if (!function_exists('app')) {
     /**

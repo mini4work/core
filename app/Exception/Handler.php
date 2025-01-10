@@ -1,9 +1,9 @@
 <?php
 
-namespace M4W\Exception;
+namespace M4W\Core\Exception;
 
-use M4W\Enums\ConsoleStyles;
-use M4W\Facades\Console;
+use M4W\Core\Enums\ConsoleStyles;
+use M4W\Core\Facades\Console;
 use Throwable;
 
 class Handler
