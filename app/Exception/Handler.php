@@ -11,19 +11,20 @@ class Handler
     public static function cause(Throwable $exception): void
     {
         $titleWidth = 70;
-        $preTab = 3;
+        $paddingSize = 3;
         $message = $exception->getMessage();
-        $messageLength = mb_strlen($message);
-        $boxDelta = $titleWidth - $preTab - $messageLength;
 
-        if ($boxDelta <= 0) {
-            $message = str_repeat(' ', $preTab) . mb_substr($message, 0, $messageLength + $boxDelta - 4) . '…   ';
-        } else {
-            $message = str_repeat(' ', $preTab) . $message . str_repeat(' ', $boxDelta);
-        }
+        $messageRows = str_split($message, 70 - ($paddingSize * 2));
 
         Console::writeLine(str_repeat(' ', $titleWidth), ConsoleStyles::BgRed);
-        Console::writeLine($message, ConsoleStyles::BgRed);
+        foreach ($messageRows as $messageRow) {
+            Console::writeLine([
+                [str_repeat(' ', $paddingSize), ConsoleStyles::BgRed],
+                [$messageRow, ConsoleStyles::BgRed],
+                [str_repeat(' ', $paddingSize + ($titleWidth - strlen($messageRow) - (2 * $paddingSize))), ConsoleStyles::BgRed],
+            ]);
+        }
+
         Console::writeLine(str_repeat(' ', $titleWidth), ConsoleStyles::BgRed);
 
         if (count($exception->getTrace())) {
