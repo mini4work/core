@@ -12,16 +12,18 @@ permissions:
 jobs:
   build:
 
-    runs-on: 8.3-cli-alpine
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-    - name: Install composer
-      run: apk add composer
-
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+    - name: Setup PHP with Composer
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+        extensions: mbstring, intl
+        tools: composer
 
     - name: Cache Composer packages
       id: composer-cache
@@ -32,11 +34,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Run test suite
       run: ./vendor/bin/pest
