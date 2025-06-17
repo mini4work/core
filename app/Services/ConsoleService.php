@@ -38,7 +38,7 @@ class ConsoleService
 
                 $result .= $style . $text[0] . ConsoleStyles::ResetAllAttributes();
             } else {
-                $result .= $text[0];
+                $result .= $text;
             }
         }
 
